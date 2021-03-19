@@ -3,18 +3,28 @@ import Header from '../Header/Header';
 import { useForm } from "react-hook-form";
 import './Login.css';
 import search from '../images/search.png';
+import { useContext, useState } from 'react';
+import { UserContext } from '../Home/Home';
 
 const Login = () => {
+    // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [user, setUser] = useState({
+        isSignIn: false,
+        email:'',
+        password:'',
+        name:'',
+    })
     const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => setUser(data);
 
     const googleHandler = () => {
         console.log('okk')
     }
     return (
         <div className='container'>
+            <h5>email : {user.email}</h5>
             <div className='bg-dark mt-3 rounded mb-3'>
-                <Header></Header>
+                <Header user={user}></Header>
             </div>
             <div className='row'>
                 <div className="col-3"></div>

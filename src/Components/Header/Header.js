@@ -2,7 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
+const Header = (props) => {
+    // console.log(props.user)
+    const {name, email, password, confirmPassword} = props.user;
+    console.log(name)
+
+    let signIn = false;
+    if(password === confirmPassword){
+        signIn = true;
+        console.log('yap')
+    }
+    console.log(signIn)
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid">
@@ -24,7 +35,10 @@ const Header = () => {
                     <li className="nav-item">
                         <Link className="nav-link text-white nav-hover" to='/contact' >Contact</Link>
                     </li>
-                    <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
+                    {
+                        signIn ? <h5>{name}</h5> : <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
+                    }
+                    {/* <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link> */}
                 </ul>
                 </div>
             </div>

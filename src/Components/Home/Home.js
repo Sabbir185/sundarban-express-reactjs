@@ -4,18 +4,17 @@ import vehicleData from '../fakeData/vehicleInfo.json';
 import VehicleCarts from '../VehicleCarts/VehicleCarts';
 import './Home.css';
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
 const Home = () => {
     const [loggedInUser, setLoggedInUser] = useState({});
     const [vehicle, setVehicle] = useState([]);
-    
     useEffect(()=>{
         setVehicle(vehicleData);
     },[])
  
     return (
-        <div className="home-bg">
+        <UserContext.Provider value={[loggedInUser, setLoggedInUser]} className="home-bg">
             <div className="container">
                 <Header></Header>
                 <div className='cart-container'>
@@ -24,8 +23,7 @@ const Home = () => {
                     }
                 </div>
             </div>
-        </div>
-        
+        </UserContext.Provider>       
     );
 };
 
