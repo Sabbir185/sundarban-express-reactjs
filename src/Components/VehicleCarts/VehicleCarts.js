@@ -1,12 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import './VehicleCart.css';
 
 const VehicleCarts = (props) => {
-    const {name, image} = props.cart;
+    const {name, image, id} = props.cart;
+
+    const history = useHistory();
+    const cardHandler = (id) => {
+        history.push(`/destination/${id}`);
+    }
     
     return (
         
-        <div className="card cart-style">
+        <div onClick={()=>cardHandler(id)} className="card cart-style">
             <div className='cart-img'>
                 <img src={image} className="card-img-top img-fluid" alt=" "/>
             </div>
