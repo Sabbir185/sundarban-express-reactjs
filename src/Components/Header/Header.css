@@ -1,0 +1,5 @@
+.nav-hover:hover{
+    background-color: lightgray;
+    border-radius: 20px;
+    color: green !important;
+}

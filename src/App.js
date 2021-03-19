@@ -6,6 +6,11 @@ import {
   Link
 } from "react-router-dom";
 import Home from './Components/Home/Home';
+import Destination from './Components/Destination/Destination';
+import Blog from './Components/Blog/Blog';
+import Contact from './Components/Contact/Contact';
+import Login from './Components/Login/Login';
+import NotFound from './Components/NotFound/NotFound';
 
 function App() {
   return (
@@ -20,21 +25,25 @@ function App() {
             <Home/>
           </Route>
 
-          {/* <Route path="/about">
-            <About />
+          <Route path="/destination">
+            <Destination></Destination>
           </Route>
 
-          <Route path="/about">
-            <About />
+          <Route path="/blog">
+            <Blog></Blog>
           </Route>
 
-          <Route path="/users">
-            <Users />
+          <Route path="/contact">
+            <Contact/>
           </Route>
 
-          <Route path="/">
-            <Home />
-          </Route> */}
+          <Route path="/login">
+            <Login/>
+          </Route>
+
+          <Route path="*">
+            <NotFound/>
+          </Route>
 
         </Switch>
     </Router>
