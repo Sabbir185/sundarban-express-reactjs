@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import VehicleData from '../fakeData/vehicleInfo.json';
 import Header from '../Header/Header';
 import './Destination.css';
 import { useForm } from "react-hook-form";
-import ReactDOM from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faRoute } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRoute } from '@fortawesome/free-solid-svg-icons';
 
 const Destination = (props) => {
     const [destination, setDestination] = useState({});
@@ -23,6 +22,7 @@ const Destination = (props) => {
     // destination search form
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => setDestination(data);
+
 
     return (
         <div className='container'>
@@ -60,7 +60,7 @@ const Destination = (props) => {
                 
                 </div>
                 <div className="col-7 bg-color">
-
+                    <img src="../images/Map.png img-fluid w-100" alt=""/>
                 </div>
             </div>
         </div>

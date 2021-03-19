@@ -11,6 +11,7 @@ import Blog from './Components/Blog/Blog';
 import Contact from './Components/Contact/Contact';
 import Login from './Components/Login/Login';
 import NotFound from './Components/NotFound/NotFound';
+import Result from './Components/Result/Result';
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
 
           <Route path="/login">
             <Login/>
+          </Route>
+
+          <Route path="/result">
+            <Result/>
           </Route>
 
           <Route path="*">

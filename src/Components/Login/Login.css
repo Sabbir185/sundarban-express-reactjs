@@ -1,0 +1,24 @@
+.form-style{
+    border: 1px solid lightgray;
+    padding: 20px 40px;
+}
+
+.google-sign{
+    border: 1px solid lightgray;
+    padding: 10px 20px;
+    margin: auto;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 17px;
+    user-select: none;
+}
+
+.google-sign img{
+    width: 30px;
+    float: left;
+}
+
+.google-sign:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}

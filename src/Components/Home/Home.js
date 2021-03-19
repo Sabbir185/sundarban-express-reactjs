@@ -7,12 +7,13 @@ import './Home.css';
 const UserContext = createContext();
 
 const Home = () => {
+    const [loggedInUser, setLoggedInUser] = useState({});
     const [vehicle, setVehicle] = useState([]);
+    
     useEffect(()=>{
         setVehicle(vehicleData);
     },[])
-    const [loggedInUser, setLoggedInUser] = useState({});
-
+ 
     return (
         <div className="home-bg">
             <div className="container">
@@ -22,7 +23,6 @@ const Home = () => {
                         vehicle.map(data => <VehicleCarts key={data.id} cart={data} ></VehicleCarts>)
                     }
                 </div>
-            
             </div>
         </div>
         

@@ -24,7 +24,7 @@ const Header = () => {
                     <li className="nav-item">
                         <Link className="nav-link text-white nav-hover" to='/contact' >Contact</Link>
                     </li>
-                    <button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button>
+                    <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
                 </ul>
                 </div>
             </div>
