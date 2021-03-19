@@ -6,7 +6,14 @@
 .cart-style{
     text-align: center;
     margin: 20px;
-    background-color: aquamarine;
+    background-color: white;
     border-radius: 20px;
+    border: 1px solid cyan;
+    box-shadow: 3px 3px 6px gray;
+}
+
+.cart-style:hover{
+    background-color: wheat;
+    cursor: pointer;
 }
 

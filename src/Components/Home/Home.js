@@ -14,15 +14,18 @@ const Home = () => {
     const [loggedInUser, setLoggedInUser] = useState({});
 
     return (
-        <div className="container">
-            <Header></Header>
-            <div className='cart-container'>
-                {
-                    vehicle.map(data => <VehicleCarts key={data.id} cart={data} ></VehicleCarts>)
-                }
-            </div>
+        <div className="home-bg">
+            <div className="container">
+                <Header></Header>
+                <div className='cart-container'>
+                    {
+                        vehicle.map(data => <VehicleCarts key={data.id} cart={data} ></VehicleCarts>)
+                    }
+                </div>
             
+            </div>
         </div>
+        
     );
 };
 

@@ -1,8 +1,16 @@
+.home-bg{
+    background-image: url('/src/Components/images/bg2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+}
+
 .cart-container{
     display: flex;
     justify-content: center;
     align-content: center;
     margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -10,6 +18,9 @@
         display: grid;
         grid-template-columns: repeat(2,1fr);
         justify-items: center;
+    }
+    .home-bg{
+        height: 800px;
     }
 
   }
@@ -19,6 +30,9 @@
         display: grid;
         grid-template-columns: repeat(1,1fr);
         justify-items: center;
+    }
+    .home-bg{
+        height: 1300px;
     }
 
   }
