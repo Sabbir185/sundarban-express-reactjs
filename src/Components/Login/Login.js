@@ -19,14 +19,23 @@ if (!firebase.apps.length) {
 const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [newUser, setNewUser] = useState({});
+    const [newUser, setNewUser] = useState({
+        isUserSignIn: false,
+        name:'',
+        email:'',
+        password:'',
+        photo:'',
+        error:'',
+        success: false
+    });
     const { register, handleSubmit, watch, errors } = useForm();
 
     const onSubmit = data => {
         firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                console.log(user);
+                setNewUser(user);
+                updateName(data.name);
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -36,6 +45,20 @@ const Login = () => {
             });
 
         };
+
+    const updateName = (name) =>{
+        var user = firebase.auth().currentUser;
+
+        user.updateProfile({
+          displayName: name,
+        }).then(function() {
+          // Update successful.
+          console.log('update successfully');
+        }).catch(function(error) {
+          // An error happened.
+          console.log('update successfully',error);
+        });
+    }
 
     
 
