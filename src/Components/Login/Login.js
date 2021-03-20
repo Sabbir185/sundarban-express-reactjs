@@ -17,27 +17,29 @@ if (!firebase.apps.length) {
 
 
 const Login = () => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  const { register, handleSubmit, watch, errors } = useForm();
 
-  const onSubmit = data => {
-      firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
-        .then((userCredential) => {
-            var user = userCredential.user;
-            console.log(user);
-        })
-        .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorMessage)
-            // ..
-        });
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [newUser, setNewUser] = useState({});
+    const { register, handleSubmit, watch, errors } = useForm();
 
-    };
+    const onSubmit = data => {
+        firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
+            .then((userCredential) => {
+                var user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorMessage)
+                // ..
+            });
+
+        };
 
     
 
-  // google sign in with firebase auth.
+    // google sign in with firebase auth.
     const googleHandler = ( ) => {
       const google = new firebase.auth.GoogleAuthProvider();
       firebase.auth()
@@ -58,7 +60,7 @@ const Login = () => {
     }
 
  
-  return (
+    return (
         <div className='container'>
             <div className='bg-dark mt-3 rounded mb-3'>
                 <Header></Header>
