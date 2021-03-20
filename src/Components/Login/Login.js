@@ -23,7 +23,8 @@ const Login = () => {
     const { register, handleSubmit, watch, errors } = useForm();
 
     const onSubmit = data => {
-        firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
+       if(toggle==0 && data.email && data.password){
+            firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
                 var user = userCredential.user;
                 // setNewUser(user);
@@ -35,7 +36,22 @@ const Login = () => {
                 console.log(errorMessage)
                 // ..
             });
+        }
 
+        if(toggle!=0 && data.email && data.password){
+            firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+            .then((userCredential) => {
+                // Signed in
+                var user = userCredential.user;
+                // ...
+                console.log(user);
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorMessage);
+            });
+        }
     };
 
     const updateName = (name) =>{
