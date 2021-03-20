@@ -13,6 +13,7 @@ import Login from './Components/Login/Login';
 import NotFound from './Components/NotFound/NotFound';
 import Result from './Components/Result/Result';
 import { createContext, useState } from 'react';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 
@@ -32,13 +33,13 @@ function App() {
                 <Home/>
               </Route>
 
-              <Route path="/destination/:id">
+              <PrivateRoute path="/destination/:id">
                 <Destination></Destination>
-              </Route>
+              </PrivateRoute>
 
-              <Route path="/destination/1">
+              <PrivateRoute path="/destination/1">
                 <Destination></Destination>
-              </Route>
+              </PrivateRoute>
 
               <Route path="/blog">
                 <Blog></Blog>

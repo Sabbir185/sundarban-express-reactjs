@@ -8,6 +8,7 @@ import { UserContext } from '../../App';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
+import { useHistory, useLocation } from 'react-router';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -22,12 +23,17 @@ const Login = () => {
     const [toggle, setToggle] = useState(0);
     const { register, handleSubmit, watch, errors } = useForm();
 
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
     const onSubmit = data => {
        if(toggle==0 && data.email && data.password){
             firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
                 var user = userCredential.user;
                 updateName(data.name);
+                history.replace(from);
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -42,6 +48,7 @@ const Login = () => {
                 const {displayName, email, photoURL} = userCredential.user;
                 const userSignUpInfo = {name:displayName, email, photoURL, signUp:true};
                 setLoggedInUser(userSignUpInfo);
+                history.replace(from);
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -75,6 +82,7 @@ const Login = () => {
         var {displayName, email, photoURL} = result.user;
         const newUserInfo = {name:displayName, email, photoURL, google:true};
         setLoggedInUser(newUserInfo);
+        history.replace(from);
       }).catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;

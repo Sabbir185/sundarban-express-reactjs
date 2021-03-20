@@ -13,10 +13,6 @@ const Header = () => {
         signIn = true;
     }
 
-    const history = useHistory();
-    const redirect = () => {
-        history.push('/home');
-    }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark">
@@ -40,7 +36,7 @@ const Header = () => {
                         <Link className="nav-link text-white nav-hover" to='/contact' >Contact</Link>
                     </li>
                     {
-                        signIn ? <h5 className='user-name mt-2 ml-2' onClick={redirect()}>{name}</h5> : <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
+                        signIn ? <h5 className='user-name mt-2 ml-2'>{name}</h5> : <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
                     }
                 </ul>
                 </div>
