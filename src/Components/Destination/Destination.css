@@ -9,3 +9,8 @@
     display: flex;
     justify-content: center;
 }
+
+.map-style{
+    width: 100%;
+    object-fit: cover;
+}

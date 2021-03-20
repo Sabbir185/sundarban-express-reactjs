@@ -1,0 +1,12 @@
+[{"id":1, "name":"BIKE", "image":"https://i.ibb.co/2d7z3PN/Frame.png", "cost":25, "foreignKey":1, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":2, "name":"BIKE", "image":"https://i.ibb.co/2d7z3PN/Frame.png", "cost":25, "foreignKey":1, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":3, "name":"BIKE", "image":"https://i.ibb.co/2d7z3PN/Frame.png", "cost":25, "foreignKey":1, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":4, "name":"CAR", "image":"https://i.ibb.co/CtCBQfs/Frame-2.png", "cost":67, "foreignKey":2, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":5, "name":"CAR", "image":"https://i.ibb.co/CtCBQfs/Frame-2.png", "cost":67, "foreignKey":2, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":6, "name":"CAR", "image":"https://i.ibb.co/CtCBQfs/Frame-2.png", "cost":67, "foreignKey":2, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":7, "name":"BUS", "image":"https://i.ibb.co/K50nrXz/Frame-1.png", "cost":15, "foreignKey":3, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":8, "name":"BUS", "image":"https://i.ibb.co/K50nrXz/Frame-1.png", "cost":15, "foreignKey":3, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":9, "name":"BUS", "image":"https://i.ibb.co/K50nrXz/Frame-1.png", "cost":15, "foreignKey":3, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":10, "name":"TRAIN", "image":"https://i.ibb.co/nM8NjNv/Group.png", "cost":30, "foreignKey":4, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":11, "name":"TRAIN", "image":"https://i.ibb.co/nM8NjNv/Group.png", "cost":30, "foreignKey":4, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"},
+{"id":12, "name":"TRAIN", "image":"https://i.ibb.co/nM8NjNv/Group.png", "cost":30, "foreignKey":4, "profile":"https://i.ibb.co/8gH0SKr/peopleicon.png"}]

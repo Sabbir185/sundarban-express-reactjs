@@ -4,27 +4,102 @@ import { useForm } from "react-hook-form";
 import './Login.css';
 import search from '../images/search.png';
 import { useContext, useState } from 'react';
-import { UserContext } from '../Home/Home';
+import { UserContext } from '../../App';
+import firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from './firebase.config';
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    }else {
+    firebase.app();
+    }
+
 
 const Login = () => {
-    // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [newUser, setNewUser] = useState(false);
     const [user, setUser] = useState({
-        isSignIn: false,
-        email:'',
-        password:'',
-        name:'',
+      isUserSignIn: false,
+      name:'',
+      email:'',
+      password:'',
+      photo:'',
+      error:'',
+      success: false
     })
+
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => setUser(data);
+  
+    // context api
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  
 
-    const googleHandler = () => {
-        console.log('okk')
+  
+    // user input
+    // handle submit
+    const handlePassEmail = (event) => {
+      // user sign up
+      if(newUser && user.email && user.password){
+        firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+        .then(res => {
+            const newUserInfo = {...user};
+            newUserInfo.error = '';
+            newUserInfo.success = true;
+            setUser(newUserInfo);
+            updateUserName(user.name);
+            console.log(res)
+        })
+          .catch((error) => {
+            const newUserInfo = {...user};
+            newUserInfo.error = error.message;
+            newUserInfo.success = false;
+            setUser(newUserInfo);
+          });
+      }
+  
+      // old user sign in
+      if(!newUser && user.email && user.password){
+        firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+        .then( res => {
+          const newUserInfo = {...user};
+            newUserInfo.error = '';
+            newUserInfo.success = true;
+            setUser(newUserInfo);
+            setLoggedInUser(newUserInfo);
+            // history.replace(from);
+            // console.log('sign in info ', res.user);
+        })
+        .catch((error) => {
+            const newUserInfo = {...user};
+            newUserInfo.error = error.message;
+            newUserInfo.success = false;
+            setUser(newUserInfo);
+        });
+      }
+      event.preventDefault();
     }
+  
+  
+  
+    const updateUserName = (name) =>{
+      var user = firebase.auth().currentUser;
+  
+      user.updateProfile({
+        displayName: name,
+      }).then(function() {
+        // console.log('user name updated successful');
+      }).catch(function(error) {
+        // console.log(error);
+      });
+    }
+
+//  console.log(user)
+
     return (
         <div className='container'>
-            <h5>email : {user.email}</h5>
             <div className='bg-dark mt-3 rounded mb-3'>
-                <Header user={user}></Header>
+                <Header></Header>
             </div>
             <div className='row'>
                 <div className="col-3"></div>
@@ -51,7 +126,7 @@ const Login = () => {
                             <small><em style={{color:'gray', padding:'5px'}}>Minmun length 6 with character and number</em></small>
                             <br/><br/>
                             
-                            <input type="submit" value='Create an account' className='btn btn-success w-100'/>
+                            <input type="submit" onClick={handlePassEmail} value='Create an account' className='btn btn-success w-100'/>
 
                             <p className='text-center mt-3'>Already have an account ? 
                             <a href="">Login</a> </p>
@@ -65,7 +140,7 @@ const Login = () => {
                 <div className="col-3"></div>
                 <div className="col-6 mb-5">
                     <p className='text-center mt-3'>--------------- or ---------------</p>
-                    <div className="google-sign w-75" onClick={googleHandler}><img src={search} alt=""/> Continue with Google</div>
+                    <div className="google-sign w-75"><img src={search} alt=""/> Continue with Google</div>
                 </div>
                 <div className="col-3"></div>
             </div>
