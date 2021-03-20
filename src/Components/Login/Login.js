@@ -21,6 +21,7 @@ const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [toggle, setToggle] = useState(0);
+    const [account, setAccount] = useState({});
     const { register, handleSubmit, watch, errors } = useForm();
 
     let history = useHistory();
@@ -33,12 +34,19 @@ const Login = () => {
             .then((userCredential) => {
                 var user = userCredential.user;
                 updateName(data.name);
-                history.replace(from);
+                
+                const userInfo = {...account};
+                userInfo.error = '';
+                userInfo.success = true;
+                setAccount(userInfo);
             })
             .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorMessage)
+                const errorMessage = error.message;
+
+                const userInfo = {...account};
+                userInfo.error = errorMessage;
+                userInfo.success = false;
+                setAccount(userInfo);
             });
         }
 
@@ -92,12 +100,18 @@ const Login = () => {
       });
     }
 
- 
+    console.log(account)
     return (
         <div className='container'>
             <div className='bg-dark mt-3 rounded mb-3'>
                 <Header></Header>
             </div>
+
+            <div className='error-msg text-center'>
+                <h4 className='text-danger mb-3'>{account.error}</h4>
+                { account.success && <h4 className='text-success mb-3'>Account created successful ! Please login</h4>}
+            </div>
+
             <div className='row'>
                 <div className="col-3"></div>
                 <div className="col-6">
