@@ -27,29 +27,25 @@ const Login = () => {
             firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                // setNewUser(user);
                 updateName(data.name);
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorMessage)
-                // ..
             });
         }
 
         if(toggle!=0 && data.email && data.password){
             firebase.auth().signInWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
-                // Signed in
-                var user = userCredential.user;
-                // ...
-                console.log(user);
+                const {displayName, email, photoURL} = userCredential.user;
+                const userSignUpInfo = {name:displayName, email, photoURL, signUp:true};
+                setLoggedInUser(userSignUpInfo);
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                console.log(errorMessage);
             });
         }
     };
@@ -61,10 +57,8 @@ const Login = () => {
           displayName: name,
         }).then(function() {
           // Update successful.
-          console.log('update successfully');
         }).catch(function(error) {
           // An error happened.
-          console.log('update successfully',error);
         });
     }
 
