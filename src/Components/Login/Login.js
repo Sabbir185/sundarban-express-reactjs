@@ -21,7 +21,10 @@ const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [toggle, setToggle] = useState(0);
-    const [account, setAccount] = useState({});
+    const [account, setAccount] = useState({
+        error:'',
+        success: false
+    });
     const { register, handleSubmit, watch, errors } = useForm();
 
     let history = useHistory();
@@ -61,6 +64,10 @@ const Login = () => {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+
+                const userInfo = {...account};
+                userInfo.error = errorMessage;
+                setAccount(userInfo);
             });
         }
     };
