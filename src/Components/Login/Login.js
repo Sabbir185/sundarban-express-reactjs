@@ -121,7 +121,7 @@ const Login = () => {
 
             <div className='row'>
                 <div className="col-3"></div>
-                <div className="col-6">
+                <div className="col-sm-12 col-md-12 col-lg-6 col-xlg-6">
 
                     <div className='form-style'>
                         { toggle == 0 ? <form onSubmit={handleSubmit(onSubmit)}>
@@ -170,7 +170,7 @@ const Login = () => {
             </div>
             <div className='row'>
                 <div className="col-3"></div>
-                <div className="col-6 mb-5">
+                <div className="col-sm-12 col-md-12 col-lg-6 col-xlg-6 mb-5">
                     <p className='text-center mt-3'>--------------- or ---------------</p>
                     <div onClick={googleHandler} className="google-sign w-75"><img src={search} alt=""/> Continue with Google</div>
                 </div>
