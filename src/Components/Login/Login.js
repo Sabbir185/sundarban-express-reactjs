@@ -19,22 +19,14 @@ if (!firebase.apps.length) {
 const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [newUser, setNewUser] = useState({
-        isUserSignIn: false,
-        name:'',
-        email:'',
-        password:'',
-        photo:'',
-        error:'',
-        success: false
-    });
+    const [toggle, setToggle] = useState(0);
     const { register, handleSubmit, watch, errors } = useForm();
 
     const onSubmit = data => {
         firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                setNewUser(user);
+                // setNewUser(user);
                 updateName(data.name);
             })
             .catch((error) => {
@@ -44,7 +36,7 @@ const Login = () => {
                 // ..
             });
 
-        };
+    };
 
     const updateName = (name) =>{
         var user = firebase.auth().currentUser;
@@ -93,7 +85,7 @@ const Login = () => {
                 <div className="col-6">
 
                     <div className='form-style'>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        { toggle == 0 ? <form onSubmit={handleSubmit(onSubmit)}>
                             <h5>Create an account</h5>
                             <input name="name" ref={register({ required: true })} placeholder='Name' className='form-control mt-4'/>
                             {errors.name && <span className='text-danger'>Name is required</span>}
@@ -115,9 +107,23 @@ const Login = () => {
                             
                             <input type="submit" value='Create an account' className='btn btn-success w-100'/>
 
-                            <p className='text-center mt-3'>Already have an account ? 
-                            <a href="">Login</a> </p>
+                            <p className='text-center mt-3'>Already have an account ? <button onClick={()=>setToggle(toggle+1)}className='btn btn-success btn-sm'>Login</button></p>
                         </form>
+                        :
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <input name="email" ref={register({ required: true, pattern: /\S+@\S+\.\S+/ })} placeholder='UserName or Email' className='form-control'/>
+                            {errors.email && <span className='text-danger'>Email is required</span>}
+                            <br/>
+
+                            <input type='password' name="password" ref={register({ required: true, min: 6, pattern: /\d{1}/ })} placeholder='Password' className='form-control'/>
+                            {errors.password && <span className='text-danger'>Password is required</span>}
+                            <small><em style={{color:'gray', padding:'5px'}}>Minmun length 6 with character and number</em></small>
+                            <br/>
+                            <br/>
+                            <input type="submit" value='Login' className='btn btn-success w-100'/>
+                        </form>
+                        }
+                        
                     </div>
             
                 </div>
