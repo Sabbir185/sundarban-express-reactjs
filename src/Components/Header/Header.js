@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import './Header.css';
 
-const Header = (props) => {
-    // const {name, password, confirmPassword} = props.userInfo;
-    // console.log(props.userInfo)
-    // console.log(name, password)
+const Header = () => {
+    const loggedInUser = useContext(UserContext);
+    // console.log(loggedInUser);
+    // console.log(loggedInUser[0].name);
+    const {name, email, photoURL, google} = loggedInUser[0];
 
+   
     // let signIn = false;
     // if(password === confirmPassword && password!==''){
     //     signIn = true;
     // }
+
+    let signIn = false;
+    if(google){
+        signIn = true;
+    }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark">
@@ -33,12 +41,12 @@ const Header = (props) => {
                     <li className="nav-item">
                         <Link className="nav-link text-white nav-hover" to='/contact' >Contact</Link>
                     </li>
-                    {/* {
-                        signIn ? <h5>{name}</h5> : <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
-                    } */}
-                    <li className="nav-item">
+                    {
+                        signIn ? <h5 className='user-name mt-2 ml-2'>{name}</h5> : <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
+                    }
+                    {/* <li className="nav-item">
                         <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
-                    </li>
+                    </li> */}
                 </ul>
                 </div>
             </div>
