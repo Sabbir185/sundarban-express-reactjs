@@ -25,7 +25,7 @@ const Header = (props) => {
                         <Link className="nav-link active nav-hover" aria-current="page" to='/home'>Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-white nav-hover" to='/destination'>Destination</Link>
+                        <Link className="nav-link text-white nav-hover" to='/destination/1'>Destination</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link text-white nav-hover" to='/blog'>Blog</Link>
@@ -36,7 +36,9 @@ const Header = (props) => {
                     {/* {
                         signIn ? <h5>{name}</h5> : <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
                     } */}
-                    <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
+                    <li className="nav-item">
+                        <Link to='/login'><button className="btn btn-warning btn-sm pl-3 pr-3" >Sign In</button></Link>
+                    </li>
                 </ul>
                 </div>
             </div>

@@ -36,7 +36,7 @@ function App() {
                 <Destination></Destination>
               </Route>
 
-              <Route path="/destination">
+              <Route path="/destination/1">
                 <Destination></Destination>
               </Route>
 

@@ -52,8 +52,6 @@ const Destination = (props) => {
                     }   
 
                     
-
-            
                     { toggle &&   <div>
                             <div className='row'>
                                 <div className="col-4">
