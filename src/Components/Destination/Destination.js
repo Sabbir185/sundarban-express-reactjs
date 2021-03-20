@@ -38,7 +38,7 @@ const Destination = (props) => {
                 <Header></Header>
             </div>
             <div className="row destination-container">
-                <div className="col-4 bg-color">
+                <div className="col-sm-12 col-lg-4 col-xlg-4 bg-color">
 
                     { toggle===false && <form  onSubmit={handleSubmit(onSubmit)}>
                             <input name="from"  ref={register({ required: true })} placeholder='From' className='form-control'/>
@@ -71,7 +71,7 @@ const Destination = (props) => {
                         </div>
                     }
                 </div>
-                <div className="col-7 bg-color">
+                <div className="col-sm-12 col-lg-7 col-xlg-7 bg-color">
                     <img className='map-style' src={MapImg} alt=""/>
                 </div>
             </div>
